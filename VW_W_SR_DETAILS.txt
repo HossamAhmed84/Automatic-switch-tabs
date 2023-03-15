@@ -1,0 +1,8 @@
+select newvalue, timestampstart, "DURATION", compatibility_ref,
+              stat_machine_ref, "SRC", DEF_COMPATIBILITY.STRNAME,STAT_MACHINE.PRLNAME
+			  From
+              VW_W_SR_DETAILS 
+			  JOIN STAT_MACHINE ON VW_W_SR_DETAILS .stat_machine_ref = STAT_MACHINE.ID
+			  JOIN DEF_COMPATIBILITY ON VW_W_SR_DETAILS.compatibility_ref = DEF_COMPATIBILITY.ID
+              where timestampstart between sysdate - 1/24 and sysdate
+              AND STAT_MACHINE.PRLNAME LIKE '%CFA%';

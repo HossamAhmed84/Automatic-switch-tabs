@@ -1,0 +1,1 @@
+pyinstaller --onefile 230309_Breakdown_Notification_V1_3.py

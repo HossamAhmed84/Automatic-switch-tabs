@@ -1,0 +1,31 @@
+import pyautogui
+import time
+
+# Define the keyboard shortcut to switch between windows
+switch_windows = ['alt', 'tab']
+
+# Define the keyboard shortcut to switch between tabs
+switch_tabs = ['ctrl', 'tab']
+
+# Loop forever, switching between Chrome and Edge every 5 seconds
+while True:
+    # Bring Chrome to the foreground and activate it
+    chrome_active = pyautogui.getActiveWindow().title == 'Google Chrome'
+    if not chrome_active:
+        pyautogui.hotkey(*switch_windows)
+        pyautogui.press('right')
+        pyautogui.press('enter')
+    else:
+        pyautogui.hotkey(*switch_tabs)
+    time.sleep(5)
+
+    # Bring Edge to the foreground and activate it
+    edge_active = pyautogui.getActiveWindow().title == 'Microsoft Edge'
+    if not edge_active:
+        pyautogui.hotkey(*switch_windows)
+        pyautogui.press('right')
+        pyautogui.press('right')
+        pyautogui.press('enter')
+    else:
+        pyautogui.hotkey(*switch_tabs)
+    time.sleep(5)
